@@ -74,6 +74,14 @@ services:
     environment:
       << : *default-environment # loads the defined environment variables from the top
 
+  udp:
+    container_name: application-logs.lagoon.svc 
+    image: mendhak/udp-listener
+    environment:
+      - UDPPORT=5555
+    ports:
+    - "0.0.0.0:4001:5555"
+    - "0.0.0.0:4001:5555/udp" 
 
   mariadb:
     image: amazeeio/mariadb-drupal
